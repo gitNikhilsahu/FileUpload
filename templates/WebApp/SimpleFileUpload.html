@@ -1,0 +1,29 @@
+{% extends 'Base.html' %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <input type="file" name="myfile"><br>
+  <button type="submit">Upload</button>
+</form>
+
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-image">
+        <img src="https://picsum.photos/200/300">
+        <span class="card-title">Card Title</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      </div>
+    </div>
+  </div>
+</div>
+          
+{% if uploaded_file_url %}
+<p>File Upload at: <a href="{{ uploaded_file_url }}">
+  {{ uploaded_file_url }}</a></p>
+{% endif %}
+
+{% endblock %}
